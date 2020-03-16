@@ -39,6 +39,8 @@ class blob:
 
 if "__main__" == __name__:
 
+    #-- Setting of window size and blob features-----
+
     window = (700,700)
     blob_color = [255, 255, 255]
     # bg_color = [213, 193,62 ]
@@ -47,7 +49,7 @@ if "__main__" == __name__:
     speed = 20
     no_blob = 30
 
-
+    #-------------------------------------------------
 
 
     blobs=  []
