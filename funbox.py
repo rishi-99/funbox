@@ -16,7 +16,7 @@ class blob:
 		self.speed_y =speed[1]*choice([-1,1])
 		self.infected = False
 		self.immunizer = False
-		self.color = [0,255,0]
+		self.color = [255,255,255]
 
 
 	def update(self):
@@ -31,12 +31,7 @@ class blob:
 		self.x += self.speed_x
 		self.y += self.speed_y
 		self.position  = (self.x,self.y)
-		if self.infected:
-			self.color = [0,0,255]
-		elif self.immunizer:
-			self.color= [255,0,0]
-		else:
-			self.colo = [0,255,0]
+
 
 	def __sub__(self, other):
 		# returns the distance from other blob
@@ -50,10 +45,10 @@ if "__main__" == __name__:
 	#-- Setting of window size and blob features-----
 
 	window = (1200,1000)
-	line_color = [0, 255, 0]
+	line_color = [255, 255, 255]
 	# bg_color = [213, 193,62 ]
 	bg_color = [0, 0,0 ]
-	bob_sensitive_dist = 100
+	bob_sensitive_dist = 250
 	speed = 20
 	no_blob = 60
 	sensitivity = 0.80
@@ -79,35 +74,7 @@ if "__main__" == __name__:
 
 				if Blob !=other:
 					if 0 < Blob-other  < bob_sensitive_dist:
-						if not other.infected and not Blob.infected:
-								continue
-						if not other.infected and Blob.infected:
-							if Blob-other <=  bob_sensitive_dist*sensitivity:
-								if not Blob.infected:
-										if Blob.immunizer:
-											if other.infected:
-												other.infected = False
-										else:
-											if other.infected:
-												Blob.infected = True
-												
-										
-											
-								elif Blob.infected:
-										if not other.infected:
-											if other.immunizer:
-												Blob.infected = False
-											else:
-												other.infected = True
-										elif other.immunizer:
-											other.infected = False
 
-								# elif Blob.infected and not other.infected:
-									# other.infected = True								
-									
-						
-						
-						
 						ratio = (Blob - other) / bob_sensitive_dist
 						brightB =  bg_color[0]*(ratio) + line_color[0]*(1-ratio)
 						brightG =  bg_color[1]*(ratio) + line_color[1]*(1-ratio)
